@@ -24,29 +24,28 @@ int main()
     enemy.x = 3;
     enemy.y = 4;
 
-    float deltaX = enemy.x - player.x; // 3
-    float deltaY = enemy.y - player.y; // 4
+    float deltaX;
+    float deltaY;
 
-    // độ dài của vector ban đầu là 5
-    while ((deltaX * deltaX + deltaY * deltaY) > 1.0f)
+    while (true)
     {
         deltaX = enemy.x - player.x;
         deltaY = enemy.y - player.y;
 
-        std::cout << "độ lệch giảm sau mỗi frame: " << "(" << deltaX << "," << deltaY << ")" << std::endl;
+        if ((deltaX * deltaX + deltaY * deltaY) <= 0.0f)
+        {
+
+            break;
+        }
 
         float length = sqrt(deltaX * deltaX + deltaY * deltaY);
-
-        std::cout << "độ dài của vector mới: " << length << std::endl;
+        std::cout << length << std::endl;
 
         float nX = deltaX / length;
         float nY = deltaY / length;
 
-        std::cout << "nX: " << nX << " nY: " << nY << std::endl;
-
         player.x += nX;
         player.y += nY;
-
-        std::cout << "player di chuyen den khi va cham enemey: " << "(" << player.x << "," << player.y << ")" << std::endl;
+        std::cout << "player: " << "(" << player.x << "," << player.y << ")" << std::endl;
     }
 }
